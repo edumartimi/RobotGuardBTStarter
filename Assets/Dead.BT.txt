@@ -1,0 +1,4 @@
+tree("Dead")
+	sequence
+		IsHealthLessThan(0.1)
+		Explode

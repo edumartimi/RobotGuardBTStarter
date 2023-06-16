@@ -1,0 +1,4 @@
+tree("Wander")
+	sequence
+		PickRandomDestination
+		MoveToDestination
