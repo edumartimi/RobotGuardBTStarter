@@ -47,7 +47,10 @@ public class AI : MonoBehaviour
         Vector3 healthBarPos = Camera.main.WorldToScreenPoint(this.transform.position);
         healthBar.value = (int)health;
         healthBar.transform.position = healthBarPos + new Vector3(0,60,0);
-        // bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * 2000);
+        if (bullet != null)
+        {
+            bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * 2000);
+        }
     }
 
     void UpdateHealth()
@@ -87,6 +90,9 @@ public class AI : MonoBehaviour
     {
         return this.health < health;
     }
+
+
+    //metodo que auto destroi
     [Task]
     public bool Explode()
     {
@@ -95,12 +101,15 @@ public class AI : MonoBehaviour
         return true;
     }
 
+    //metodo que faz ver o jogador
     [Task]
     public bool SeePlayer()
     {
         return true;
     }
 
+
+    //metodo que faz ir até o jogador
     [Task]
     public void TargetPlayer()
     {
@@ -109,10 +118,14 @@ public class AI : MonoBehaviour
     }
 
     [Task]
+
+    //metodo que faz olhar o jogador
     public void LookAtTarget()
     {
-       
+        Task.current.Succeed();
     }
+
+    //metodo que faz atirar
     [Task]
     public void Fire()
     {
